@@ -1,0 +1,3 @@
+name: pulumi-api-aks
+runtime: python
+description: PSConf Asia AKS API
