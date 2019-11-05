@@ -1,5 +1,6 @@
+$VerbosePreference = 'Continue'
 $cosmosKey = ConvertTo-SecureString -String $env:cosmosKey -AsPlainText -Force 
-$cosmosDbContext = New-CosmosDbContext -Account $env:cosmosDbAccountName -Database $env:cosmodDbDatabaseName -Key $cosmosKey -Verbose 
+$cosmosDbContext = New-CosmosDbContext -Account $env:cosmosDbAccountName -Database $env:cosmodDbDatabaseName -Key $cosmosKey
 
 New-PolarisPostRoute -Path '/users' -Scriptblock {
     $firstName = $Request.Query['firstname']
