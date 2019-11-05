@@ -1,3 +1,3 @@
 name: pulumi-api-aks
 runtime: python
-description: PSConf Asia AKS API
+description: PowerShell AKS API
