@@ -14,19 +14,31 @@ This repo can be used to deploy a demo application running a PowerShell Polaris 
 
 After cloning this repo, from this working directory, run these commands:
 
-1. Install the required Python packages packages:
+1. Create the python virtual environment:
+
+    ```bash
+    virtualenv -p python3 venv
+    ```
+
+2. Change into the virtual environment:
+
+    ```bash
+    source venv/bin/activate
+    ```
+
+3. Install the required Python packages packages:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-2. Create a new stack, which is an isolated deployment target for this example:
+4. Create a new stack, which is an isolated deployment target for this example:
 
     ```bash
     pulumi stack init
     ```
 
-3. Set the configuration variables for this program:
+5. Set the configuration variables for this program:
 
     ```bash
     pulumi config set aksServiceCidr 10.10.0.0/16
@@ -41,13 +53,13 @@ After cloning this repo, from this working directory, run these commands:
     pulumi config set vnetAddressSpace 10.0.0.0/16
     ```
 
-4. Build the docker image, deploy the infrastructure and the app:
+6. Build the docker image, deploy the infrastructure and the app:
 
     ```bash
     pulumi up
     ```
 
-5. After 10-15 minutes, your cluster will be ready, and the kubeconfig YAML you'll use to connect to the cluster will be available as an output. You can save this kubeconfig to a file like so:
+7. After 10-15 minutes, your cluster will be ready, and the kubeconfig YAML you'll use to connect to the cluster will be available as an output. You can save this kubeconfig to a file like so:
 
     ```bash
     pulumi stack output kubeconfig > kubeconfig.yaml
@@ -65,7 +77,7 @@ After cloning this repo, from this working directory, run these commands:
     KUBECONFIG=./kubeconfig.yaml az aks browse --resource-group <aksResourceGroupName> --name <aksClusterName>
     ```
 
-6. Once the stack is deployed into your Azure subscription pulumi will show you several `Outputs`, one of which is the `ingress_ip`.
+8. Once the stack is deployed into your Azure subscription pulumi will show you several `Outputs`, one of which is the `ingress_ip`.
     Access the API via PowerShell (`curl`, postman, etc) like this:
 
     ```powershell
